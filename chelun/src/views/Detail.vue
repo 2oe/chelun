@@ -62,7 +62,6 @@
       }),
       // 跳转到车型详情
       toLink(car_id) {
-        console.log(car_id)
         this.$router.push({
           name: 'Quotation',
           params: {

@@ -3,7 +3,7 @@
     <p @click="ToImgAll('全部颜色')">全部颜色</p>
     <div>
       <p class="c_type">
-        <span v-for="(item,index) in keys" :key="index" :class="num == index?'active':''" @click="addClass(item,index)">{{item}}</span>
+        <span v-for="(item,index) in keys" :key="index" :class="num == index?'active':''" @click="addClass(index)">{{item}}</span>
       </p>
       <ul>
         <li v-for="(item,index) in list" :key="index" @click="ToImg(item.Name,item.ColorId)">
@@ -28,15 +28,21 @@
     },
     computed: {
       ...mapState({
+        // 总数据
         colorList: state => state.color.colorList,
         active: state => state.color.active
       }),
+      // 2017 2018 1019
       keys() {
         return Object.keys(this.colorList).sort((a, b) => {
           return b - a
         })
       },
+      // list数据
       list() {
+        // colorList:{2017:[],2016:[]} 
+        // keys 2017 2016
+        // num  index
         return this.colorList[this.keys[this.num]]
       }
     },
@@ -44,7 +50,8 @@
       ...mapActions({
         getColorList: 'color/getColorList'
       }),
-      addClass(item, index) {
+      addClass(index) {
+        // 点击2017 赋值给num
         this.num = index
       },
       ToImg(name, id) {
