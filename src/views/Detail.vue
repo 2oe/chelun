@@ -9,7 +9,7 @@
         <h5 v-if="infoList.market_attribute">{{infoList.market_attribute.dealer_price}}</h5>
         <p v-if="infoList.market_attribute">指导价:{{infoList.market_attribute.official_refer_price}}</p>
       </div>
-      <router-link to='/quotation'>询问底价</router-link>
+      <a @click="linkTo">询问底价</a>
     </div>
     <ul class="tabList">
       <li v-for="(item,index) in tabs" :class="{active:index == num}" @click="tab(item,index)" :key="index">{{item}}</li>
@@ -27,10 +27,10 @@
         </div>
       </div>
     </div>
-    <router-link to='/quotation' class="linkTo">
+    <a @click="linkTo" class="linkTo">
       <h6>询问底价</h6>
       <p>本地经销商为您报价</p>
-    </router-link>
+    </a>
   </div>
 </template>
 <script>
@@ -74,6 +74,15 @@
           cityId: this.cityInfo.data.CityID
         }))
       },
+      linkTo(){
+        this.$router.push({
+          name: 'Quotation',
+          params: {
+            carId: this.infoList.list[localStorage.getItem('carId')].car_id,
+            cityId: this.cityInfo.data.CityID
+          }
+        })
+      },
       // 跳转到图片页
       toImg(SerialID) {
         this.$router.push({
@@ -94,10 +103,15 @@
       }
     },
     updated() {
+      localStorage.setItem('params', JSON.stringify({
+        carId: this.infoList.list[localStorage.getItem('carId')].car_id,
+        cityId: this.cityInfo.data.CityID
+      }))
       this.tabCon = Object.keys(this.tabCon).length ? this.tabCon : this.tabConAll;
     },
     mounted() {
       localStorage.setItem('SerialID', this.$route.query.SerialID);
+      localStorage.setItem('carId', this.$route.query.id);
       let id = localStorage.getItem('SerialID');
       this.InfoAndListById(id);
       this.getCityInfo();

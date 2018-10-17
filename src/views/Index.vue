@@ -19,10 +19,10 @@
       </div>
     </div>
     <div id="carType" :class="active?'active':''">
-      <div class="carType_List" v-for="(item) in makeList" :key="item.GroupId">
+      <div class="carType_List" v-for="(item,index) in makeList" :key="index">
         <h5>{{item.GroupName}}</h5>
         <div class="carType_item">
-          <router-link v-for="(item1,index1) in item.GroupList" :to="{path:'/detail',query:{SerialID:item1.SerialID}}"
+          <router-link v-for="(item1,index1) in item.GroupList" :to="{path:'/detail',query:{SerialID:item1.SerialID,id:index1}}"
             :key="index1" class="carType_box">
             <img v-lazy="item1.Picture" alt="">
             <p>
