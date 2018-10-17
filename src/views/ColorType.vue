@@ -3,8 +3,10 @@
     <p @click="ToImgAll('全部颜色')">全部颜色</p>
     <div>
       <p class="c_type">
+        <!-- 日期选择 -->
         <span v-for="(item,index) in keys" :key="index" :class="num == index?'active':''" @click="addClass(index)">{{item}}</span>
       </p>
+      <!-- 颜色列表 -->
       <ul>
         <li v-for="(item,index) in list" :key="index" @click="ToImg(item.Name,item.ColorId)">
           <span :style="`background:${item.Value}`"></span>
@@ -55,20 +57,22 @@
         this.num = index
       },
       ToImg(name, id) {
-        // localStorage.setItem('colorName',name);
-        sessionStorage.setItem('colorID', id);
-        this.$router.push({
+        sessionStorage.setItem('colorName',name);
+        // sessionStorage.setItem('colorID', id);
+        this.$router.replace({
           name: 'img',
           params: {
-            name: name
+            name: sessionStorage.getItem('colorName'),
+            colorID:id
           }
         })
       },
       ToImgAll(name) {
+        sessionStorage.setItem('colorName',name);
         this.$router.push({
           name: 'img',
           params: {
-            name: name
+            name: sessionStorage.getItem('colorName')
           }
         })
       }

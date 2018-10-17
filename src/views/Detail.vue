@@ -1,19 +1,24 @@
 <template>
   <div class="box">
     <div class="showImg" @click='toImg(infoList.SerialID)'>
+      <!-- 图片 -->
       <img :src="infoList.CoverPhoto">
       <span>{{infoList.pic_group_count}}张照片</span>
     </div>
     <div class="show_list">
       <div class="show_left">
+        <!-- 信息 -->
         <h5 v-if="infoList.market_attribute">{{infoList.market_attribute.dealer_price}}</h5>
         <p v-if="infoList.market_attribute">指导价:{{infoList.market_attribute.official_refer_price}}</p>
       </div>
       <a @click="linkTo">询问底价</a>
     </div>
+    <!-- 询价列表数据 -->
+    <!-- 时间 -->
     <ul class="tabList">
       <li v-for="(item,index) in tabs" :class="{active:index == num}" @click="tab(item,index)" :key="index">{{item}}</li>
     </ul>
+    <!-- 内容列表 -->
     <div class="tabCon">
       <div v-for='(itemCon,index) in tabCon' :key="index">
         <p class="title">{{index}}</p>
@@ -27,6 +32,7 @@
         </div>
       </div>
     </div>
+    <!-- 定位显示 -->
     <a @click="linkTo" class="linkTo">
       <h6>询问底价</h6>
       <p>本地经销商为您报价</p>
@@ -85,6 +91,7 @@
       },
       // 跳转到图片页
       toImg(SerialID) {
+        sessionStorage.clear();
         this.$router.push({
           name: 'img',
           params: {

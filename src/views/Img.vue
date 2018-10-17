@@ -1,13 +1,16 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" ref="wrap">
     <div class="checkColor">
       <p @click="checkColorType">
-        <span>{{$route.params.name?$route.params.name:color}}</span>
+        <!-- 颜色选择 -->
+        <span>{{color}}</span>
       </p>
       <p @click="checkCarType">
-        <span><em>{{$route.params.des?$route.params.des:type}}</em></span>
+        <!-- 车款选择 -->
+        <span><em>{{desType}}</em></span>
       </p>
     </div>
+    <!-- 图片列表 -->
     <div class="con">
       <ul class="img-default" v-for="(item,index) in imgs" :key="index">
         <li v-for="(item1,index1) in item.List" :key="index1" :index='index1' :data-id="item.Id+'_'+index+'_'+item.Count">
@@ -19,11 +22,13 @@
         </li>
       </ul>
     </div>
+    <!-- 点击图片6张 -->
     <div class="box" v-show='isShowImg' @scroll="scroll" ref="box">
       <section ref="section">
         <img v-for="(item, index) in imgList" :key="index" v-lazy="`${item.Url.replace('{0}', item.LowSize)}`" @click='showSwiper(index)' />
       </section>
     </div>
+    <!-- swiper -->
     <section class="swiper" v-show="imgList.length && isShowSwiper" @click="swiperClick">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide v-for="(item, index) in imgList" :key="index">
@@ -39,6 +44,7 @@
 
 <script>
   import "swiper/dist/css/swiper.css";
+  // import {debounce} from '@/utils/utils.js';
   import {
     swiper,
     swiperSlide
@@ -50,9 +56,6 @@
   import {
     lazyLoad
   } from "@/utils/lazyLoad";
-  import {
-    debounce
-  } from "@/utils/utils";
   export default {
     data() {
       return {
@@ -61,7 +64,7 @@
         current: 1,
         page: 1,
         color: '颜色',
-        type: '车款'
+        desType: '车款'
       };
     },
     computed: {
@@ -166,6 +169,17 @@
       let serialId = localStorage.getItem("SerialID");
       let colorID = this.$route.params.colorID;
       let carID = this.$route.params.carID;
+      let name = sessionStorage.getItem('colorName');
+      if(sessionStorage.getItem('des')){
+        this.desType = sessionStorage.getItem('des');
+      }else{
+        this.desType = '车款';
+      }
+      if(name){
+        this.color = name;
+      }else{
+        this.color = '颜色';
+      }
       let obj = [];
       if (serialId) {
         obj.push(serialId, colorID, carID)
@@ -173,7 +187,8 @@
       } else {
         localStorage.setItem("SerialID", this.$route.params.id);
       }
-      // let func = debounce(e=>this.scroll(e));
+      // 去抖动
+      // let func = debounce(this.scroll, 100);
       // this.$refs.wrap.addEventListener('scroll', func);
     }
   };
@@ -356,5 +371,4 @@
       font-size: 0.4rem;
     }
   }
-
 </style>

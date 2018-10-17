@@ -1,9 +1,11 @@
 <template>
   <div class="car_type">
     <div>
+      <!-- 日期 -->
       <ul class="tabList">
         <li v-for="(item,index) in tabs" :class="{active:index == num}" @click="tab(item,index)" :key="index">{{item}}</li>
       </ul>
+      <!-- 列表数据 -->
       <div class="tabCon">
         <div v-for='(itemCon,index) in tabCon' :key="index">
           <p class="title">{{index}}</p>

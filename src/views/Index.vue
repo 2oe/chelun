@@ -1,6 +1,7 @@
 <template>
   <div class="wrap_box">
     <div class="wrap_item">
+      <!-- 首页数据 -->
       <div class="wrap">
         <div class="list_item" v-for="(item, index) in list" :key="index">
           <h6 :ref="'a'+index">{{item.title}}</h6>
@@ -13,11 +14,13 @@
           </div>
         </div>
       </div>
+      <!-- 字母切换 -->
       <div class="pos" v-show="!active">
         <span>#</span>
         <span v-for="(item, index) in list" :key="index" @touchmove='touchMove' @touchstart='touchStart(index,$event)'>{{item.title}}</span>
       </div>
     </div>
+    <!-- 侧边栏数据 -->
     <div id="carType" :class="active?'active':''">
       <div class="carType_List" v-for="(item,index) in makeList" :key="index">
         <h5>{{item.GroupName}}</h5>

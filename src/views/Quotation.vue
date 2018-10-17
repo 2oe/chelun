@@ -6,6 +6,7 @@
     </header>
     <div class="content" ref='content'>
       <div>
+        <!-- 详细信息 -->
         <div class="info" v-if="dealer.details" @click='selectCarType(dealer.details.car_id)'>
           <img :src="dealer.details.serial.Picture" alt="">
           <div>
@@ -14,6 +15,7 @@
           </div>
         </div>
         <div class="write_info">
+          <!-- 个人信息 -->
           <p class="person_info">个人信息</p>
           <div class="opea_info">
             <p>
@@ -34,6 +36,7 @@
           </div>
         </div>
         <div class="dealer_info">
+          <!-- 选择报价经销商 -->
           <p class="person_info">选择报价经销商</p>
           <ul v-for="(item,index) in dealer.list" :key="index">
             <li :class="index<3?'active':''" @click="selectTab(index)" ref="li">

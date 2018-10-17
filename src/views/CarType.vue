@@ -3,9 +3,11 @@
     <p @click="allType('全部车款')">全部车款</p>
     <div>
       <ul class="tabList">
+        <!-- 日期选择 -->
         <li v-for="(item,index) in tabs" :class="{active:index == num}" @click="tab(item,index)" :key="index">{{item}}</li>
       </ul>
       <div class="tabCon">
+        <!-- 列表 -->
         <div v-for='(itemCon,index) in tabCon' :key="index">
           <p class="title">{{index}}</p>
           <div class="tabCon_item" v-for='(value,key) in itemCon' :key="key" @click="checkTab(value.market_attribute.year,value.car_name,value.car_id)">
@@ -56,15 +58,18 @@
       }),
       checkTab(year, name, id) {
         let des = year + '款  ' + name;
+        sessionStorage.setItem('des', des);
         sessionStorage.setItem('carID', id);
         this.$router.push({
           name: 'img',
           params: {
-            des: des
+            des: des,
+            carID:sessionStorage.getItem('carID')
           }
         })
       },
       allType(type) {
+        sessionStorage.setItem('des', type);
         this.$router.push({
           name: 'img',
           params: {
@@ -73,7 +78,6 @@
         })
       },
       toLink(car_id) {
-        console.log(car_id)
         // this.$router.push({name:'Quotation',params:{carId:car_id,cityId:this.cityInfo.data.CityID}})
         localStorage.setItem('params', JSON.stringify({
           carId: car_id,
