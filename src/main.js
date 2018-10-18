@@ -10,6 +10,11 @@ import VueLazyload from 'vue-lazyload'
 // 引入通用弹框
 import Alert from '@/components/Alert';
 
+// 引入elemnt-ui;
+import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
 // 去掉生成环境提示
 Vue.config.productionTip = false;
 

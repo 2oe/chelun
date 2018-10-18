@@ -68,27 +68,29 @@
       }),
       // 跳转到车型详情
       toLink(car_id) {
-        this.$router.push({
-          name: 'Quotation',
-          params: {
+        if (this.cityInfo.data.CityID) {
+          this.$router.push({
+            name: 'Quotation',
+            params: {
+              carId: car_id,
+              cityId: this.cityInfo.data.CityID
+            }
+          })
+          localStorage.setItem('params', JSON.stringify({
             carId: car_id,
             cityId: this.cityInfo.data.CityID
-          }
-        })
-        localStorage.setItem('params', JSON.stringify({
-          carId: car_id,
-          cityId: this.cityInfo.data.CityID
-        }))
+          }))
+        }
       },
-      linkTo(){
-        let id =localStorage.getItem('carId');
+      linkTo() {
+        let id = localStorage.getItem('carId');
         let cityId = this.cityInfo.data.CityID;
-        if(this.infoList.list[id].car_id && cityId){
+        if (this.infoList.list[id].car_id && cityId) {
           this.$router.push({
             name: 'Quotation',
             params: {
               carId: this.infoList.list[id].car_id,
-              cityId:cityId
+              cityId: cityId
             }
           })
         }
@@ -114,8 +116,8 @@
       }
     },
     updated() {
-      let id =localStorage.getItem('carId');
-      if(this.infoList.list[id]){
+      let id = localStorage.getItem('carId');
+      if (this.infoList.list[id]) {
         localStorage.setItem('params', JSON.stringify({
           carId: this.infoList.list[id].car_id,
           cityId: this.cityInfo.data.CityID

@@ -6,7 +6,7 @@
         <div class="list_item" v-for="(item, index) in list" :key="index">
           <h6 :ref="'a'+index">{{item.title}}</h6>
           <div class="list_padding">
-            <p v-for="(item1, index1) in item.list" :key="index1" :data-id='item1.MasterID' @click="addActive(index,index1)"
+            <p v-for="(item1, index1) in item.list" :key="index1" :data-id='item1.MasterID' @click="addActive(index,index1,$event)"
               ref="p">
               <img v-lazy="item1.CoverPhoto" alt="">
               <span>{{item1.Name}}</span>
@@ -71,8 +71,8 @@
       }),
       addActive(index, index1, e) {
         _hmt.push(['_trackEvent','汽车报价','tap','品牌点击']);
-        this.MakeList(this.$refs.p[index1].getAttribute("data-id"));
-        if (this.$refs.p[index1].getAttribute("data-id")) {
+        this.MakeList(e.target.dataset.id*1);
+        if (e.target.dataset.id*1) {
           this.active = true;
         }
       },

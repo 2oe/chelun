@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "element-ui": "^2.4.8",
     "vue": "^2.5.11"
   },
   "browserslist": [
@@ -21,12 +22,15 @@
     "@alicloud/sms-sdk": "^1.1.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-component": "^1.1.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "better-scroll": "^1.13.2",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "deepmerge": "^2.2.1",
+    "element-ui": "^2.4.8",
     "express": "^4.16.4",
     "file-loader": "^1.1.4",
     "github-webhook-handler": "^0.7.1",
