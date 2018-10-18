@@ -81,13 +81,16 @@
         }))
       },
       linkTo(){
-        this.$router.push({
-          name: 'Quotation',
-          params: {
-            carId: this.infoList.list[localStorage.getItem('carId')].car_id,
-            cityId: this.cityInfo.data.CityID
-          }
-        })
+        let id =localStorage.getItem('carId')
+        if(id){
+          this.$router.push({
+            name: 'Quotation',
+            params: {
+              carId: this.infoList.list[id].car_id,
+              cityId: this.cityInfo.data.CityID
+            }
+          })
+        }
       },
       // 跳转到图片页
       toImg(SerialID) {
