@@ -70,7 +70,6 @@
         MakeList: "index/MakeList"
       }),
       addActive(index, index1, e) {
-        console.log('统计')
         _hmt.push(['_trackEvent','汽车报价','tap','品牌点击']);
         this.MakeList(this.$refs.p[index1].getAttribute("data-id"));
         if (this.$refs.p[index1].getAttribute("data-id")) {

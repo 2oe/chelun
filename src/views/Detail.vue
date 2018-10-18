@@ -81,13 +81,14 @@
         }))
       },
       linkTo(){
-        let id =localStorage.getItem('carId')
-        if(id){
+        let id =localStorage.getItem('carId');
+        let cityId = this.cityInfo.data.CityID;
+        if(this.infoList.list[id].car_id && cityId){
           this.$router.push({
             name: 'Quotation',
             params: {
               carId: this.infoList.list[id].car_id,
-              cityId: this.cityInfo.data.CityID
+              cityId:cityId
             }
           })
         }
@@ -113,10 +114,13 @@
       }
     },
     updated() {
-      localStorage.setItem('params', JSON.stringify({
-        carId: this.infoList.list[localStorage.getItem('carId')].car_id,
-        cityId: this.cityInfo.data.CityID
-      }))
+      let id =localStorage.getItem('carId');
+      if(this.infoList.list[id]){
+        localStorage.setItem('params', JSON.stringify({
+          carId: this.infoList.list[id].car_id,
+          cityId: this.cityInfo.data.CityID
+        }))
+      }
       this.tabCon = Object.keys(this.tabCon).length ? this.tabCon : this.tabConAll;
     },
     mounted() {

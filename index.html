@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chelun</title>
-    <script>
-      
-      function f () {
-        document.documentElement.style.fontSize = (window.innerWidth)/750 * 100 + 'px'
-      }
 
-      (window.onload = f) && (window.onresize = f) && f();
-    </script>
-    <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?99f5fe6e0a3250717f14f1b6b2cc0e95";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
-      </script>
-      <script src="https://browser.sentry-cdn.com/4.1.1/bundle.min.js" crossorigin="anonymous"></script>
-      <script>
-        Sentry.init({ dsn: 'https://3deee5bde8fe440cbdcffd961d22c91c@sentry.io/1303649' });
-        setInterval(()=>{
-          console.log(b.a)
-        },1000)
-      </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="./dist/build.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chelun</title>
+  <script>
+    function f() {
+      document.documentElement.style.fontSize = (window.innerWidth) / 750 * 100 + 'px'
+    }
+
+    (window.onload = f) && (window.onresize = f) && f();
+
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0a384435136665fefc135ae81b5d34dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script src="https://browser.sentry-cdn.com/4.1.1/bundle.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({ dsn: 'https://dc0f9ee0f4094a48ad4b1d655e0b7a12@sentry.io/1303684' });
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="./dist/build.js"></script>
+</body>
+
 </html>
