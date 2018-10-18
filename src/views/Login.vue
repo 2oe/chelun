@@ -1,16 +1,19 @@
 <template>
-    <el-form status-icon ref="ruleForm2" label-width="70px" class="demo-ruleForm">
-        <el-form-item label="用户名">
-            <el-input type="text" v-model="username" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="密码">
-            <el-input type="password" v-model="password" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item>
-            <el-button type="primary" @click="submitForm()">提交</el-button>
-            <el-button @click="resetForm()">重置</el-button>
-        </el-form-item>
-    </el-form>
+    <div class="box">
+        <h1>登录</h1>
+        <el-form status-icon ref="ruleForm2" label-width="70px" class="demo-ruleForm">
+            <el-form-item label="用户名">
+                <el-input type="text" v-model="username" autocomplete="off" placeholder="请输入2-5位汉字"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-input type="password" v-model="password" autocomplete="off" placeholder="请输入3-8位任意字符"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm()">提交</el-button>
+                <el-button @click="resetForm()">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
 </template>
 
 <script>
@@ -62,6 +65,16 @@
 </script>
 
 <style lang="scss" scoped>
+.box{
+    width: 100%;
+    height: 100%;
+    h1{
+        text-align: center;
+        font-size: .8rem;
+        padding-top: .5rem;
+        font-size: .8rem;
+    }
+}
 .demo-ruleForm{
     width: 80%;
     margin: 200px auto;
