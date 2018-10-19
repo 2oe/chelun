@@ -27,7 +27,7 @@
         <div class="carType_item">
           <router-link v-for="(item1,index1) in item.GroupList" :to="{path:'/detail',query:{SerialID:item1.SerialID,id:index1}}"
             :key="index1" class="carType_box">
-            <img v-lazy="item1.Picture" alt="">
+            <img v-lazy="`${item1.Picture.replace('{0}', item1.LowSize)}`" alt="">
             <p>
               <span class="title">{{item1.AliasName}}</span>
               <span class="price">{{item1.DealerPrice}}</span>
