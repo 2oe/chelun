@@ -2,7 +2,7 @@
   <div class="box">
     <div class="showImg" @click='toImg(infoList.SerialID)'>
       <!-- 图片 -->
-      <img :src="infoList.CoverPhoto">
+      <img v-if="infoList.CoverPhoto" :src="`${infoList.CoverPhoto.replace('{0}', infoList.CoverPhotoSize)}`">
       <span>{{infoList.pic_group_count}}张照片</span>
     </div>
     <div class="show_list">
