@@ -8,7 +8,7 @@
           <div class="list_padding">
             <p v-for="(item1, index1) in item.list" :key="index1" :data-id='item1.MasterID' @click="addActive(index,index1,$event)"
               ref="p">
-              <img v-lazy="item1.CoverPhoto" alt="">
+              <img v-lazy="`${item1.CoverPhoto.replace('{0}', item1.LowSize)}`" alt="">
               <span>{{item1.Name}}</span>
             </p>
           </div>
